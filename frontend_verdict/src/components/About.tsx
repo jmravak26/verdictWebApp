@@ -1,0 +1,175 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Award, Users, Target } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const About: React.FC = () => {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: Award,
+      title: 'Excellence',
+      description: 'Committed to delivering exceptional quality in every project',
+      color: 'from-yellow-400 to-orange-500',
+    },
+    {
+      icon: Users,
+      title: 'Collaboration',
+      description: 'Working closely with clients to achieve their vision',
+      color: 'from-blue-400 to-blue-600',
+    },
+    {
+      icon: Target,
+      title: 'Results',
+      description: 'Focused on measurable outcomes and business growth',
+      color: 'from-green-400 to-green-600',
+    },
+  ];
+
+  return (
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='m0 40l40-40h-40v40zm40 0v-40h-40l40 40z'/%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Image Placeholder */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative order-2 lg:order-1"
+          >
+            <div className="aspect-[4/3] bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-3xl flex items-center justify-center shadow-2xl border-2 border-gray-100">
+              <div className="text-center">
+                <div className="w-28 h-28 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                  <span className="text-4xl">🏢</span>
+                </div>
+                <p className="text-gray-700 font-bold text-xl">About Us Image</p>
+                <p className="text-sm text-gray-500 mt-2 font-medium">4:3 Aspect Ratio</p>
+              </div>
+            </div>
+            
+            {/* Decorative Elements */}
+            <div className="absolute -z-10 -top-8 -left-8 w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl" />
+            <motion.div
+              animate={{ rotate: [0, 5, 0] }}
+              transition={{ duration: 6, repeat: Infinity }}
+              className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl opacity-20"
+            />
+            <motion.div
+              animate={{ rotate: [0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full opacity-20"
+            />
+          </motion.div>
+
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold text-blue-700 mb-6 border border-blue-200"
+            >
+              Who We Are
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                {t('aboutTitle')}
+              </span>
+            </h2>
+            
+            <p className="text-xl text-gray-600 mb-10 leading-relaxed font-medium">
+              {t('aboutText')}
+            </p>
+
+            {/* Features */}
+            <div className="space-y-6 mb-10">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start space-x-4 group"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-3 gap-8 pt-8 border-t-2 border-gray-100"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center group cursor-pointer"
+              >
+                <div className="text-4xl font-black bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">50+</div>
+                <div className="text-sm text-gray-600 font-bold uppercase tracking-wide">Projects</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                viewport={{ once: true }}
+                className="text-center group cursor-pointer"
+              >
+                <div className="text-4xl font-black bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">5+</div>
+                <div className="text-sm text-gray-600 font-bold uppercase tracking-wide">Years</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                viewport={{ once: true }}
+                className="text-center group cursor-pointer"
+              >
+                <div className="text-4xl font-black bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">100%</div>
+                <div className="text-sm text-gray-600 font-bold uppercase tracking-wide">Satisfied</div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
