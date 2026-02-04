@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Sparkles, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { ScrollButton } from './ui/ScrollButton';
+import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Hero: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     smoothScrollTo(sectionId);
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
               className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold text-blue-700 mb-6 border border-blue-200"
             >
               <Sparkles className="w-4 h-4 mr-2" />
-              Modern & Innovative
+              {t('modernInnovative')}
             </motion.div>
             
             <motion.h1
@@ -87,27 +87,6 @@ const Hero: React.FC = () => {
                 {t('learnMore')}
               </button>
             </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-gray-200"
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-1">50+</div>
-                <div className="text-sm text-gray-600 font-medium">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-1">5+</div>
-                <div className="text-sm text-gray-600 font-medium">Years</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-1">100%</div>
-                <div className="text-sm text-gray-600 font-medium">Satisfied</div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Hero Image Placeholder */}
@@ -117,13 +96,26 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="aspect-square bg-gradient-to-br from-blue-100 via-white to-purple-100 rounded-3xl flex items-center justify-center shadow-2xl border border-white/50 backdrop-blur-sm">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                  <span className="text-4xl">🖼️</span>
-                </div>
-                <p className="text-gray-700 font-bold text-lg">Hero Image Placeholder</p>
-                <p className="text-sm text-gray-500 mt-2 font-medium">1:1 Aspect Ratio</p>
+            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/50 backdrop-blur-sm relative">
+              <img 
+                src="/pictures/profilePicPlaceholder.jpg" 
+                alt="Andrija Mravak - Verdict Owner" 
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Name & Motto Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="text-white"
+                >
+                  <h3 className="text-2xl font-bold mb-1">Andrija Mravak</h3>
+                  <p className="text-sm font-medium text-blue-200">
+                    {language === 'hr' ? '"Vaš mir, moj prioritet"' : '"Your Peace of Mind, My Priority"'}
+                  </p>
+                </motion.div>
               </div>
             </div>
             

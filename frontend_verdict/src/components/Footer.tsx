@@ -1,26 +1,51 @@
-import React from 'react';
-import { Github, Linkedin, Twitter, Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import { Linkedin, Heart, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
+  const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
+
+  const createHearts = () => {
+    const newHearts = Array.from({ length: 6 }, (_, i) => ({
+      id: Date.now() + i,
+      x: Math.random() * 100 - 50,
+      y: Math.random() * 50 - 25,
+    }));
+    setHearts(newHearts);
+    setTimeout(() => setHearts([]), 4000);
+  };
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Facebook, href: 'https://web.facebook.com/andrija.mravak', label: 'Facebook' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/andrija-mravak-ba1000227/', label: 'LinkedIn' },
   ];
 
   const quickLinks = [
     { label: t('home'), id: 'home' },
     { label: t('about'), id: 'about' },
     { label: t('services'), id: 'services' },
-    { label: t('contact'), id: 'contact' },
+    { label: t('partners'), id: 'partners' },
+    { label: t('contact'), id: 'footer' },
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+    <footer id="footer" className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+      <style>
+        {`
+          @keyframes float-up {
+            0% {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+            100% {
+              opacity: 0;
+              transform: translateY(-50px) scale(0.5);
+            }
+          }
+        `}
+      </style>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -33,10 +58,10 @@ const Footer: React.FC = () => {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-6 group">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
-                <span className="text-white font-bold text-2xl">L</span>
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+                <img src="/imagesLogo/verdictLogo.png" alt="Verdict Logo" className="w-full h-full object-contain rounded-2xl" />
               </div>
-              <span className="ml-4 text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Logo</span>
+              <span className="ml-4 text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Verdict</span>
             </div>
             <p className="text-gray-300 leading-relaxed text-lg mb-6 max-w-md">
               {t('aboutText')}
@@ -77,17 +102,43 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Contact Info</h3>
             <div className="space-y-4 text-gray-300">
-              <div className="group">
-                <p className="font-medium text-white mb-1">Email</p>
-                <p className="group-hover:text-blue-400 transition-colors">contact@company.com</p>
+              <div className="group flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-blue-400" />
+                <div>
+                  <p className="font-medium text-white mb-1">Email</p>
+                  <a 
+                    href="mailto:verdict.amg@gmail.com" 
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    verdict.amg@gmail.com
+                  </a>
+                </div>
               </div>
-              <div className="group">
-                <p className="font-medium text-white mb-1">Phone</p>
-                <p className="group-hover:text-blue-400 transition-colors">+385 XX XXX XXXX</p>
+              <div className="group flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-green-400" />
+                <div>
+                  <p className="font-medium text-white mb-1">Phone</p>
+                  <a 
+                    href="tel:+385915148509" 
+                    className="text-gray-300 hover:text-green-400 transition-colors"
+                  >
+                    +385 91 514 8509
+                  </a>
+                </div>
               </div>
-              <div className="group">
-                <p className="font-medium text-white mb-1">Address</p>
-                <p className="group-hover:text-blue-400 transition-colors">Zagreb, Croatia</p>
+              <div className="group flex items-center space-x-3">
+                <MapPin className="w-4 h-4 text-purple-400" />
+                <div>
+                  <p className="font-medium text-white mb-1">Address</p>
+                  <a 
+                    href="https://maps.google.com/?q=Gala+157,+Gala,+Croatia" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-purple-400 transition-colors"
+                  >
+                    Gala 157, Gala
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -97,12 +148,28 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-gray-400">
-              <span>&copy; 2024 Company Name. {t('footerText')}</span>
+              <span>&copy; 2024 Verdict. {t('footerText')}</span>
             </div>
             
-            <div className="flex items-center space-x-2 text-gray-400">
+            <div className="flex items-center space-x-2 text-gray-400 relative">
               <span>Made with</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
+              <button 
+                onClick={createHearts}
+                className="relative focus:outline-none"
+              >
+                <Heart className="w-4 h-4 text-red-500 animate-pulse hover:scale-110 transition-transform cursor-pointer" />
+                {hearts.map((heart) => (
+                  <Heart
+                    key={heart.id}
+                    className="absolute w-3 h-3 text-red-400 animate-bounce pointer-events-none"
+                    style={{
+                      left: `${heart.x}px`,
+                      top: `${heart.y}px`,
+                      animation: 'float-up 4s ease-out forwards',
+                    }}
+                  />
+                ))}
+              </button>
               <span>in Croatia</span>
             </div>
           </div>

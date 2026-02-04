@@ -45,19 +45,19 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo Placeholder */}
-          <div className="flex items-center group cursor-pointer">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-              <span className="text-white font-bold text-xl">L</span>
+          <div className="flex items-center group cursor-pointer" onClick={() => scrollToSection('home')}>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              <img src="/imagesLogo/verdictLogo.png" alt="Verdict Logo" className="w-full h-full object-contain rounded-xl" />
             </div>
-            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Logo</span>
+            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Verdict</span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
-            {['home', 'about', 'services', 'contact'].map((section) => (
+            {['home', 'about', 'services', 'partners', 'contact'].map((section) => (
               <button
                 key={section}
-                onClick={() => scrollToSection(section)}
+                onClick={() => scrollToSection(section === 'contact' ? 'footer' : section)}
                 className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50 relative group"
               >
                 {t(section)}
@@ -92,10 +92,10 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden py-6 border-t border-gray-100 bg-white/95 backdrop-blur-xl">
             <div className="flex flex-col space-y-1">
-              {['home', 'about', 'services', 'contact'].map((section) => (
+              {['home', 'about', 'services', 'partners', 'contact'].map((section) => (
                 <button
                   key={section}
-                  onClick={() => scrollToSection(section)}
+                  onClick={() => scrollToSection(section === 'contact' ? 'footer' : section)}
                   className="text-left px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium"
                 >
                   {t(section)}

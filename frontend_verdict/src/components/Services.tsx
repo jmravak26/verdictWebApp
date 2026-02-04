@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Users, ArrowUpRight } from 'lucide-react';
+import { Car, Calculator, FileSearch, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Services: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const services = [
     {
-      icon: Code,
+      icon: Car,
       title: t('service1Title'),
       description: t('service1Text'),
       color: 'from-blue-500 to-blue-600',
@@ -17,7 +17,7 @@ const Services: React.FC = () => {
       borderColor: 'border-blue-200',
     },
     {
-      icon: Smartphone,
+      icon: Calculator,
       title: t('service2Title'),
       description: t('service2Text'),
       color: 'from-purple-500 to-purple-600',
@@ -25,7 +25,7 @@ const Services: React.FC = () => {
       borderColor: 'border-purple-200',
     },
     {
-      icon: Users,
+      icon: FileSearch,
       title: t('service3Title'),
       description: t('service3Text'),
       color: 'from-green-500 to-green-600',
@@ -36,12 +36,6 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -58,7 +52,7 @@ const Services: React.FC = () => {
             viewport={{ once: true }}
             className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold text-blue-700 mb-6 border border-blue-200"
           >
-            What We Offer
+            {language === 'hr' ? 'Što Nudimo' : 'What We Offer'}
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6">
@@ -107,7 +101,7 @@ const Services: React.FC = () => {
 
                 {/* Learn More Button */}
                 <button className="mt-6 inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors group/btn">
-                  Learn More
+                  {language === 'hr' ? 'Saznajte Više' : 'Learn More'}
                   <ArrowUpRight className="ml-1 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                 </button>
               </div>
@@ -117,24 +111,6 @@ const Services: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-20"
-        >
-          <p className="text-xl text-gray-600 mb-8">Ready to transform your business?</p>
-          <button
-            onClick={() => smoothScrollTo('contact')}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
-          >
-            Start Your Project
-            <ArrowUpRight className="ml-2 w-5 h-5" />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

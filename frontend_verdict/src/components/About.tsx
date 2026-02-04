@@ -9,32 +9,26 @@ const About: React.FC = () => {
   const features = [
     {
       icon: Award,
-      title: 'Excellence',
-      description: 'Committed to delivering exceptional quality in every project',
+      title: t('excellence'),
+      description: t('excellenceDesc'),
       color: 'from-yellow-400 to-orange-500',
     },
     {
       icon: Users,
-      title: 'Collaboration',
-      description: 'Working closely with clients to achieve their vision',
+      title: t('collaboration'),
+      description: t('collaborationDesc'),
       color: 'from-blue-400 to-blue-600',
     },
     {
       icon: Target,
-      title: 'Results',
-      description: 'Focused on measurable outcomes and business growth',
+      title: t('results'),
+      description: t('resultsDesc'),
       color: 'from-green-400 to-green-600',
     },
   ];
 
   return (
-    <section id="about" className="py-24 bg-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='m0 40l40-40h-40v40zm40 0v-40h-40l40 40z'/%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+    <section id="about" className="py-24 bg-gradient-to-b from-blue-50 via-white to-gray-50 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -85,7 +79,7 @@ const About: React.FC = () => {
               viewport={{ once: true }}
               className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold text-blue-700 mb-6 border border-blue-200"
             >
-              Who We Are
+              {t('whoWeAre')}
             </motion.div>
             
             <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
