@@ -21,7 +21,6 @@ const translations = {
     // Hero Section
     heroTitle: 'Professional Vehicle Assessment Services',
     heroSubtitle: 'Registered for vehicle, machinery and property valuation and damage assessment throughout Dalmatia',
-    getStarted: 'Get Started',
     learnMore: 'Learn More',
     modernInnovative: 'Modern & Innovative',
     
@@ -45,6 +44,10 @@ const translations = {
     service2Text: 'Creating reports to determine vehicle market value after extraordinary events (breakdown, traffic accident, etc.)',
     service3Title: 'Damage Assessment',
     service3Text: 'Independent and professional damage assessment using knowledge and experience gained through years of work in the profession',
+    service4Title: 'Machinery Damage Assessment',
+    service4Text: 'Damage assessment on industrial and self-propelled machinery - so-called "Machine Breakdown"',
+    service5Title: 'Property Damage Assessment',
+    service5Text: 'Professional assessment of property damage for insurance and legal purposes',
     
     // Contact Section
     contactTitle: 'Get In Touch',
@@ -68,7 +71,6 @@ const translations = {
     // Hero Section
     heroTitle: 'Profesionalne Usluge Procjene Vozila',
     heroSubtitle: 'Registrirani za procjenu vrijednosti i štete na motornim vozilima, strojevima i imovini na području cijele Dalmacije',
-    getStarted: 'Počnite',
     learnMore: 'Saznajte Više',
     modernInnovative: 'Moderno i Inovativno',
     
@@ -92,6 +94,10 @@ const translations = {
     service2Text: 'Izrada elaborata za motorno vozilo u cilju određivanja vrijednosti vozila na tržištu nakon nastanka izvanrednog događaja (kvar, prometna nesreća/nezgoda i slično)',
     service3Title: 'Procjena Štete',
     service3Text: 'Neovisna i stručna procjena štete koristeći se znanjem i iskustvom prikupljenim godinama rada u struci',
+    service4Title: 'Procjene štete na radnim strojevima',
+    service4Text: 'Procjene štete na radnim strojevima (industrijski i samohodni) - takozvani "Lom stroja"',
+    service5Title: 'Procjene štete na nekretninama',
+    service5Text: 'Stručna procjena štete na nekretninama za osiguravajuće i pravne svrhe',
     
     // Contact Section
     contactTitle: 'Kontaktirajte Nas',

@@ -56,7 +56,7 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
-            {['home', 'about', 'services', 'partners', 'contact'].map((section) => (
+            {['home', 'services', 'about', 'partners', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section === 'contact' ? 'footer' : section)}
@@ -163,7 +163,7 @@ const Header: React.FC = () => {
             }}
           >
             <div className="flex flex-col space-y-1">
-              {['home', 'about', 'services', 'partners', 'contact'].map((section) => (
+              {['home', 'services', 'about', 'partners', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section === 'contact' ? 'footer' : section)}

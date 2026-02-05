@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Car, Calculator, FileSearch, ArrowUpRight } from 'lucide-react';
+import { Car, Calculator, FileSearch, Wrench, Home } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Services: React.FC = () => {
@@ -31,12 +31,28 @@ const Services: React.FC = () => {
       bgColor: 'from-green-50 to-green-100',
       borderColor: 'border-green-200',
     },
+    {
+      icon: Wrench,
+      title: t('service4Title'),
+      description: t('service4Text'),
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'from-orange-50 to-orange-100',
+      borderColor: 'border-orange-200',
+    },
+    {
+      icon: Home,
+      title: t('service5Title'),
+      description: t('service5Text'),
+      color: 'from-red-500 to-red-600',
+      bgColor: 'from-red-50 to-red-100',
+      borderColor: 'border-red-200',
+    },
   ];
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +78,7 @@ const Services: React.FC = () => {
           <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -70,12 +86,12 @@ const Services: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className={`group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 ${service.borderColor} hover:border-opacity-50 transform hover:-translate-y-2`}
+              className={`group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 ${service.borderColor} hover:border-opacity-50 transform hover:-translate-y-2 flex flex-col h-full`}
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 <div className={`w-20 h-20 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
                   <service.icon className="w-10 h-10 text-white" />
                 </div>
@@ -84,12 +100,12 @@ const Services: React.FC = () => {
                   {service.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
+                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors flex-grow">
                   {service.description}
                 </p>
 
                 {/* Service Image Placeholder */}
-                <div className={`aspect-video bg-gradient-to-br ${service.bgColor} rounded-2xl flex items-center justify-center border-2 ${service.borderColor} group-hover:border-opacity-70 transition-all duration-300`}>
+                <div className={`aspect-video bg-gradient-to-br ${service.bgColor} rounded-2xl flex items-center justify-center border-2 ${service.borderColor} group-hover:border-opacity-70 transition-all duration-300 mt-auto`}>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md group-hover:shadow-lg transition-shadow">
                       <span className="text-2xl">📷</span>
@@ -97,12 +113,6 @@ const Services: React.FC = () => {
                     <p className="text-sm text-gray-600 font-semibold">Service Image</p>
                   </div>
                 </div>
-
-                {/* Learn More Button */}
-                <button className="mt-6 inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors group/btn">
-                  {language === 'hr' ? 'Saznajte Više' : 'Learn More'}
-                  <ArrowUpRight className="ml-1 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                </button>
               </div>
 
               {/* Hover Effect Border */}

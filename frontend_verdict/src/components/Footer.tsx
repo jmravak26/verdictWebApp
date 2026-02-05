@@ -24,10 +24,9 @@ const Footer: React.FC = () => {
 
   const quickLinks = [
     { label: t('home'), id: 'home' },
-    { label: t('about'), id: 'about' },
     { label: t('services'), id: 'services' },
+    { label: t('about'), id: 'about' },
     { label: t('partners'), id: 'partners' },
-    { label: t('contact'), id: 'footer' },
   ];
 
   return (
@@ -148,7 +147,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-gray-400">
-              <span>&copy; 2024 Verdict. {t('footerText')}</span>
+              <span>&copy; 2025 Verdict. {t('footerText')}</span>
             </div>
             
             <div className="flex items-center space-x-2 text-gray-400 relative">

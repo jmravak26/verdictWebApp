@@ -70,11 +70,11 @@ const Hero: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('services')}
                 className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
               >
                 <Zap className="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
-                {t('getStarted')}
+                {language === 'hr' ? 'Usluge' : 'Services'}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity -z-10"></div>
               </button>

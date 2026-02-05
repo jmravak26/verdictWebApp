@@ -40,14 +40,17 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="relative order-2 lg:order-1"
           >
-            <div className="aspect-[4/3] bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-3xl flex items-center justify-center shadow-2xl border-2 border-gray-100">
-              <div className="text-center">
-                <div className="w-28 h-28 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                  <span className="text-4xl">🏢</span>
-                </div>
-                <p className="text-gray-700 font-bold text-xl">About Us Image</p>
-                <p className="text-sm text-gray-500 mt-2 font-medium">4:3 Aspect Ratio</p>
-              </div>
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/50 backdrop-blur-sm relative">
+              <motion.img 
+                src="/imagesLogo/verdictLogo.png" 
+                alt="Verdict Logo" 
+                className="w-full h-full object-fill"
+                whileHover={{ 
+                  scale: 1.05,
+                  filter: "drop-shadow(0 20px 25px rgba(59, 130, 246, 0.3))"
+                }}
+                transition={{ duration: 0.3 }}
+              />
             </div>
             
             {/* Decorative Elements */}
