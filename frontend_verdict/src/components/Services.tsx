@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Car, Calculator, FileSearch, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Services: React.FC = () => {
   const { t, language } = useLanguage();

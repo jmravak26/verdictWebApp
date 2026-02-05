@@ -5,31 +5,22 @@ import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
-    const controlHeader = () => {
-      const currentScrollY = window.scrollY;
-      
+    const handleScroll = () => {
       if (isScrolling) return;
-      
-      if (currentScrollY < 10) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+      const scrollY = window.scrollY;
+      const maxScroll = 300;
+      const progress = Math.min(scrollY / maxScroll, 1);
+      setScrollProgress(progress);
     };
 
-    window.addEventListener('scroll', controlHeader);
-    return () => window.removeEventListener('scroll', controlHeader);
-  }, [lastScrollY, isScrolling]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isScrolling]);
 
   const scrollToSection = (sectionId: string) => {
     setIsScrolling(true);
@@ -39,9 +30,15 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 border-b border-gray-100 shadow-sm transition-transform duration-1000 ease-in-out ${
-      isVisible ? 'translate-y-0' : '-translate-y-full'
-    }`}>
+    <header 
+      className="fixed top-0 w-full backdrop-blur-xl z-50 border-b transition-all duration-300 ease-out"
+      style={{
+        backgroundColor: `rgba(${255 - scrollProgress * 218}, ${255 - scrollProgress * 156}, ${255 - scrollProgress * 21}, 0.95)`,
+        background: scrollProgress > 0 ? `linear-gradient(to right, rgb(${37 + scrollProgress * 110}, ${99 + scrollProgress * 57}, ${235 - scrollProgress * 1}), rgb(${147 - scrollProgress * 110}, ${51 + scrollProgress * 48}, ${234 + scrollProgress * 1}))` : undefined,
+        borderColor: scrollProgress > 0.1 ? `rgba(59, 130, 246, ${0.2 + scrollProgress * 0.3})` : 'rgb(243, 244, 246)',
+        boxShadow: scrollProgress > 0.1 ? '0 10px 15px -3px rgba(0, 0, 0, 0.1)' : '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo Placeholder */}
@@ -49,7 +46,12 @@ const Header: React.FC = () => {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               <img src="/imagesLogo/verdictLogo.png" alt="Verdict Logo" className="w-full h-full object-contain rounded-xl" />
             </div>
-            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">Verdict</span>
+            <span 
+              className="ml-3 text-2xl font-bold transition-colors duration-300"
+              style={{
+                color: scrollProgress > 0.3 ? 'white' : `rgba(17, 24, 39, ${1 - scrollProgress})`
+              }}
+            >Verdict</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -58,21 +60,67 @@ const Header: React.FC = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section === 'contact' ? 'footer' : section)}
-                className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50 relative group"
+                className="px-4 py-2 font-medium transition-all duration-200 rounded-lg relative group"
+                style={{
+                  color: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)'
+                }}
+                onMouseEnter={(e) => {
+                  if (scrollProgress > 0.3) {
+                    e.currentTarget.style.color = 'white';
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                  } else {
+                    e.currentTarget.style.color = 'rgb(37, 99, 235)';
+                    e.currentTarget.style.backgroundColor = 'rgb(239, 246, 255)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }}
               >
                 {t(section)}
-                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                <span 
+                  className="absolute bottom-0 left-1/2 w-0 h-0.5 transition-all duration-300 group-hover:w-full group-hover:left-0"
+                  style={{
+                    backgroundColor: scrollProgress > 0.3 ? 'white' : 'rgb(37, 99, 235)'
+                  }}
+                ></span>
               </button>
             ))}
           </nav>
 
           {/* Language Switcher & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-3 py-2 hover:bg-gray-200 transition-colors">
-              <Globe className="w-4 h-4 text-gray-600" />
+            <div 
+              className="flex items-center space-x-2 rounded-full px-3 py-2 transition-colors"
+              style={{
+                backgroundColor: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.1)' : 'rgb(243, 244, 246)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.2)' : 'rgb(229, 231, 235)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.1)' : 'rgb(243, 244, 246)';
+              }}
+            >
+              <Globe 
+                className="w-4 h-4 transition-colors"
+                style={{
+                  color: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.8)' : 'rgb(75, 85, 99)'
+                }}
+              />
               <button
                 onClick={() => setLanguage(language === 'en' ? 'hr' : 'en')}
-                className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors min-w-[24px]"
+                className="text-sm font-semibold transition-colors min-w-[24px]"
+                style={{
+                  color: scrollProgress > 0.3 ? 'white' : 'rgb(55, 65, 81)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.8)' : 'rgb(37, 99, 235)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = scrollProgress > 0.3 ? 'white' : 'rgb(55, 65, 81)';
+                }}
               >
                 {language === 'en' ? 'HR' : 'EN'}
               </button>
@@ -81,7 +129,23 @@ const Header: React.FC = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
+              className="md:hidden p-2 rounded-xl transition-all duration-200"
+              style={{
+                color: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)'
+              }}
+              onMouseEnter={(e) => {
+                if (scrollProgress > 0.3) {
+                  e.currentTarget.style.color = 'white';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                } else {
+                  e.currentTarget.style.color = 'rgb(37, 99, 235)';
+                  e.currentTarget.style.backgroundColor = 'rgb(239, 246, 255)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)';
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -90,13 +154,36 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-gray-100 bg-white/95 backdrop-blur-xl">
+          <div 
+            className="md:hidden py-6 border-t backdrop-blur-xl transition-colors duration-300"
+            style={{
+              backgroundColor: `rgba(${255 - scrollProgress * 218}, ${255 - scrollProgress * 156}, ${255 - scrollProgress * 21}, 0.95)`,
+              background: scrollProgress > 0 ? `linear-gradient(to right, rgb(${37 + scrollProgress * 110}, ${99 + scrollProgress * 57}, ${235 - scrollProgress * 1}), rgb(${147 - scrollProgress * 110}, ${51 + scrollProgress * 48}, ${234 + scrollProgress * 1}))` : undefined,
+              borderColor: scrollProgress > 0.1 ? `rgba(255, 255, 255, ${0.2 + scrollProgress * 0.3})` : 'rgb(243, 244, 246)'
+            }}
+          >
             <div className="flex flex-col space-y-1">
               {['home', 'about', 'services', 'partners', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section === 'contact' ? 'footer' : section)}
-                  className="text-left px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 font-medium"
+                  className="text-left px-4 py-3 rounded-lg transition-all duration-200 font-medium"
+                  style={{
+                    color: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (scrollProgress > 0.3) {
+                      e.currentTarget.style.color = 'white';
+                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                    } else {
+                      e.currentTarget.style.color = 'rgb(37, 99, 235)';
+                      e.currentTarget.style.backgroundColor = 'rgb(239, 246, 255)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)';
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
                 >
                   {t(section)}
                 </button>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Partners: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
 
   const currentPartners = [
     { name: 'Grawe', logo: '/imagesLogo/GraweLogo.png', url: 'https://www.grawe.hr/' },
