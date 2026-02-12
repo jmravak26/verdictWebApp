@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
@@ -23,10 +23,17 @@ const Header: React.FC = () => {
   }, [isScrolling]);
 
   const scrollToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
     setIsScrolling(true);
     smoothScrollTo(sectionId);
-    setTimeout(() => setIsScrolling(false), 1200);
-    setIsMenuOpen(false);
+    setTimeout(() => {
+      setIsScrolling(false);
+      // Force update scroll progress after animation
+      const scrollY = window.scrollY;
+      const maxScroll = 300;
+      const progress = Math.min(scrollY / maxScroll, 1);
+      setScrollProgress(progress);
+    }, 1200);
   };
 
   return (
@@ -91,38 +98,30 @@ const Header: React.FC = () => {
 
           {/* Language Switcher & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <div 
-              className="flex items-center space-x-2 rounded-full px-3 py-2 transition-colors"
-              style={{
-                backgroundColor: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.1)' : 'rgb(243, 244, 246)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.2)' : 'rgb(229, 231, 235)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.1)' : 'rgb(243, 244, 246)';
-              }}
-            >
-              <Globe 
-                className="w-4 h-4 transition-colors"
-                style={{
-                  color: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.8)' : 'rgb(75, 85, 99)'
-                }}
-              />
+            <div className="flex items-center gap-1 p-1 rounded-lg backdrop-blur-sm" style={{
+              backgroundColor: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.05)'
+            }}>
               <button
-                onClick={() => setLanguage(language === 'en' ? 'hr' : 'en')}
-                className="text-sm font-semibold transition-colors min-w-[24px]"
+                onClick={() => setLanguage('en')}
+                className="px-3 py-1.5 text-xs font-bold rounded-md transition-all duration-300"
                 style={{
-                  color: scrollProgress > 0.3 ? 'white' : 'rgb(55, 65, 81)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.8)' : 'rgb(37, 99, 235)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = scrollProgress > 0.3 ? 'white' : 'rgb(55, 65, 81)';
+                  backgroundColor: language === 'en' ? (scrollProgress > 0.3 ? 'white' : 'rgb(59, 130, 246)') : 'transparent',
+                  color: language === 'en' ? (scrollProgress > 0.3 ? 'rgb(59, 130, 246)' : 'white') : (scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.7)' : 'rgb(107, 114, 128)'),
+                  boxShadow: language === 'en' ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none'
                 }}
               >
-                {language === 'en' ? 'HR' : 'EN'}
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('hr')}
+                className="px-3 py-1.5 text-xs font-bold rounded-md transition-all duration-300"
+                style={{
+                  backgroundColor: language === 'hr' ? (scrollProgress > 0.3 ? 'white' : 'rgb(59, 130, 246)') : 'transparent',
+                  color: language === 'hr' ? (scrollProgress > 0.3 ? 'rgb(59, 130, 246)' : 'white') : (scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.7)' : 'rgb(107, 114, 128)'),
+                  boxShadow: language === 'hr' ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none'
+                }}
+              >
+                HR
               </button>
             </div>
 
@@ -131,20 +130,7 @@ const Header: React.FC = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-xl transition-all duration-200"
               style={{
-                color: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)'
-              }}
-              onMouseEnter={(e) => {
-                if (scrollProgress > 0.3) {
-                  e.currentTarget.style.color = 'white';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                } else {
-                  e.currentTarget.style.color = 'rgb(37, 99, 235)';
-                  e.currentTarget.style.backgroundColor = 'rgb(239, 246, 255)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.9)' : 'rgb(55, 65, 81)';
-                e.currentTarget.style.backgroundColor = 'transparent';
+                color: scrollProgress > 0.3 ? 'white' : 'rgb(55, 65, 81)'
               }}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

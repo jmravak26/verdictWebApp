@@ -100,19 +100,9 @@ const Services: React.FC = () => {
                   {service.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors flex-grow">
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
                   {service.description}
                 </p>
-
-                {/* Service Image Placeholder */}
-                <div className={`aspect-video bg-gradient-to-br ${service.bgColor} rounded-2xl flex items-center justify-center border-2 ${service.borderColor} group-hover:border-opacity-70 transition-all duration-300 mt-auto`}>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md group-hover:shadow-lg transition-shadow">
-                      <span className="text-2xl">📷</span>
-                    </div>
-                    <p className="text-sm text-gray-600 font-semibold">Service Image</p>
-                  </div>
-                </div>
               </div>
 
               {/* Hover Effect Border */}
