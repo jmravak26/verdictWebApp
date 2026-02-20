@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Linkedin, Heart, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Heart, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
 
   const createHearts = () => {
@@ -18,7 +18,6 @@ const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://web.facebook.com/andrija.mravak', label: 'Facebook' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/andrija-mravak-ba1000227/', label: 'LinkedIn' },
   ];
 
@@ -83,7 +82,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Quick Links</h3>
+            <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t('quickLinks')}</h3>
             <div className="space-y-3">
               {quickLinks.map((link, index) => (
                 <button
@@ -99,12 +98,12 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Contact Info</h3>
+            <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t('contactInfo')}</h3>
             <div className="space-y-4 text-gray-300">
               <div className="group flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-blue-400" />
                 <div>
-                  <p className="font-medium text-white mb-1">Email</p>
+                  <p className="font-medium text-white mb-1">{language === 'hr' ? 'Email' : 'Email'}</p>
                   <a 
                     href="mailto:verdict.amg@gmail.com" 
                     className="text-gray-300 hover:text-blue-400 transition-colors"
@@ -116,7 +115,7 @@ const Footer: React.FC = () => {
               <div className="group flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-green-400" />
                 <div>
-                  <p className="font-medium text-white mb-1">Phone</p>
+                  <p className="font-medium text-white mb-1">{language === 'hr' ? 'Telefon' : 'Phone'}</p>
                   <a 
                     href="tel:+385915148509" 
                     className="text-gray-300 hover:text-green-400 transition-colors"
@@ -128,7 +127,7 @@ const Footer: React.FC = () => {
               <div className="group flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-purple-400" />
                 <div>
-                  <p className="font-medium text-white mb-1">Address</p>
+                  <p className="font-medium text-white mb-1">{language === 'hr' ? 'Adresa' : 'Address'}</p>
                   <a 
                     href="https://maps.google.com/?q=Gala+157,+Gala,+Croatia" 
                     target="_blank"
@@ -139,6 +138,13 @@ const Footer: React.FC = () => {
                   </a>
                 </div>
               </div>
+              <div className="group flex items-center space-x-3">
+                <Clock className="w-4 h-4 text-orange-400" />
+                <div>
+                  <p className="font-medium text-white mb-1">{t('workingHours')}</p>
+                  <p className="text-gray-300">{t('workingHoursTime')}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -147,11 +153,11 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-gray-400">
-              <span>&copy; 2025 Verdict. {t('footerText')}</span>
+              <span>&copy; 2024 Verdict. {t('footerText')}</span>
             </div>
             
             <div className="flex items-center space-x-2 text-gray-400 relative">
-              <span>Made with</span>
+              <span>{t('madeWith')}</span>
               <button 
                 onClick={createHearts}
                 className="relative focus:outline-none"
@@ -169,7 +175,7 @@ const Footer: React.FC = () => {
                   />
                 ))}
               </button>
-              <span>in Croatia</span>
+              <span>{t('inCroatia')}</span>
             </div>
           </div>
         </div>

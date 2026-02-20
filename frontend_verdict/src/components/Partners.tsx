@@ -6,17 +6,17 @@ const Partners: React.FC = () => {
   const { language } = useLanguage();
 
   const currentPartners = [
-    { name: 'Grawe', logo: '/imagesLogo/GraweLogo.png', url: 'https://www.grawe.hr/' },
     { name: 'Dekra', logo: '/imagesLogo/DekraLogo.jpg', url: 'https://www.dekra.hr/hr/damage-appraisal/' },
+    { name: 'Grawe', logo: '/imagesLogo/GraweLogo.png', url: 'https://www.grawe.hr/' },
     { name: 'Uniqa', logo: '/imagesLogo/UniqaLogo.jpg', url: 'https://www.uniqa.hr/' },
   ];
 
   const pastPartners = [
-    { name: 'Triglav', logo: '/imagesLogo/TriglavLogo.png', url: 'https://www.triglav.hr/' },
     { name: 'Crosig', logo: '/imagesLogo/CroatiaOsiguranjeLogo.jpg', url: 'https://crosig.hr/' },
-    { name: 'Wiener', logo: '/imagesLogo/WienerLogo.png', url: 'https://www.wiener.hr/' },
-    { name: 'Sava Osiguranje', logo: '/imagesLogo/SavaLogo.png', url: 'https://www.sava-osiguranje.hr/' },
     { name: 'Generali', logo: '/imagesLogo/GeneraliLogo.png', url: 'https://generali.hr/' },
+    { name: 'Sava Osiguranje', logo: '/imagesLogo/SavaLogo.png', url: 'https://www.sava-osiguranje.hr/' },
+    { name: 'Triglav', logo: '/imagesLogo/TriglavLogo.png', url: 'https://www.triglav.hr/' },
+    { name: 'Wiener', logo: '/imagesLogo/WienerLogo.png', url: 'https://www.wiener.hr/' },
   ];
 
   return (

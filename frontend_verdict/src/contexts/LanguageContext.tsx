@@ -59,6 +59,12 @@ const translations = {
     
     // Footer
     footerText: 'All rights reserved.',
+    quickLinks: 'Quick Links',
+    contactInfo: 'Contact Info',
+    workingHours: 'Working Hours',
+    workingHoursTime: 'Mon - Fri: 8:00 AM - 4:00 PM',
+    madeWith: 'Made with',
+    inCroatia: 'in Croatia',
   },
   hr: {
     // Navigation
@@ -109,6 +115,12 @@ const translations = {
     
     // Footer
     footerText: 'Sva prava pridržana.',
+    quickLinks: 'Brze Poveznice',
+    contactInfo: 'Kontakt Informacije',
+    workingHours: 'Radno Vrijeme',
+    workingHoursTime: 'Pon - Pet: 08:00 - 16:00',
+    madeWith: 'Napravljeno s',
+    inCroatia: 'u Hrvatskoj',
   },
 };
 
