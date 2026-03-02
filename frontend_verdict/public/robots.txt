@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://verdict.hr/sitemap.xml

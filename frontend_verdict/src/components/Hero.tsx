@@ -1,11 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Play, Sparkles, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Hero: React.FC = () => {
   const { t, language } = useLanguage();
+  const [showSeoText, setShowSeoText] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSeoText(true), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     smoothScrollTo(sectionId);
@@ -103,19 +109,41 @@ const Hero: React.FC = () => {
                 className="w-full h-full object-cover"
               />
               
-              {/* Name & Motto Overlay */}
+              {/* Name & Motto Overlay - Animated */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="text-white"
-                >
-                  <h3 className="text-2xl font-bold mb-1">Andrija Mravak</h3>
-                  <p className="text-sm font-medium text-blue-200">
-                    {language === 'hr' ? '"Vaš mir, moj prioritet"' : '"Your Peace of Mind, My Priority"'}
-                  </p>
-                </motion.div>
+                <AnimatePresence mode="wait">
+                  {!showSeoText ? (
+                    <motion.div
+                      key="motto"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.8 }}
+                      className="text-white"
+                    >
+                      <h3 className="text-2xl font-bold mb-1">Andrija Mravak</h3>
+                      <p className="text-sm font-medium text-blue-200">
+                        {language === 'hr' ? '"Vaš mir, moj prioritet"' : '"Your Peace of Mind, My Priority"'}
+                      </p>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="seo"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.8 }}
+                      className="text-white"
+                    >
+                      <h3 className="text-xl font-bold mb-2">Andrija Mravak - Verdict</h3>
+                      <p className="text-sm font-medium text-blue-200 leading-relaxed">
+                        {language === 'hr'
+                          ? 'Ovlašteni procjenitelj za procjenu vozila i procjenu štete nakon prometnih nesreća u Hrvatskoj. Stručne usluge procjene vrijednosti vozila, strojeva i nekretnina u Dalmaciji.'
+                          : 'Certified assessor for vehicle valuation and damage assessment after traffic accidents in Croatia. Expert services for vehicle, machinery, and real estate valuation in Dalmatia.'}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
             

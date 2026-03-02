@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Linkedin, Heart, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Linkedin, Heart, Mail, Phone, MapPin, Clock, Building2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
@@ -19,6 +19,7 @@ const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: Linkedin, href: 'https://www.linkedin.com/in/andrija-mravak-ba1000227/', label: 'LinkedIn' },
+    { icon: Building2, href: 'https://www.companywall.hr/tvrtka/verdict-obrt-za-usluge-vl-andrija-mravak-gala-gala-157/MMTVD3sD', label: 'CompanyWall' },
   ];
 
   const quickLinks = [
