@@ -104,9 +104,9 @@ const Hero: React.FC = () => {
           >
             <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/50 backdrop-blur-sm relative">
               <img 
-                src="/pictures/profilePicPlaceholder.jpg" 
+                src="/pictures/profilePicture1.jpg" 
                 alt="Andrija Mravak - Verdict Owner" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover [object-position:50%_30%]"
               />
               
               {/* Name & Motto Overlay - Animated */}
