@@ -55,19 +55,19 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Logo & Description */}
-          <div className="md:col-span-2">
-            <div className="flex items-center mb-6 group">
+          <div className="md:col-span-2 text-center md:text-left">
+            <div className="flex items-center mb-6 group justify-center md:justify-start">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
                 <img src="/imagesLogo/verdictLogo.png" alt="Verdict Logo" className="w-full h-full object-contain rounded-2xl" />
               </div>
               <span className="ml-4 text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Verdict</span>
             </div>
-            <p className="text-gray-300 leading-relaxed text-lg mb-6 max-w-md">
+            <p className="text-gray-300 leading-relaxed text-lg mb-6 max-w-md mx-auto md:mx-0">
               {t('aboutText')}
             </p>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -82,14 +82,14 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t('quickLinks')}</h3>
             <div className="space-y-3">
               {quickLinks.map((link, index) => (
                 <button
                   key={index}
                   onClick={() => smoothScrollTo(link.id)}
-                  className="block text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-2 font-medium"
+                  className="block w-full text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-2 font-medium"
                 >
                   {link.label}
                 </button>
@@ -98,10 +98,10 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t('contactInfo')}</h3>
             <div className="space-y-4 text-gray-300">
-              <div className="group flex items-center space-x-3">
+              <div className="group flex items-center space-x-3 justify-center md:justify-start">
                 <Mail className="w-4 h-4 text-blue-400" />
                 <div>
                   <p className="font-medium text-white mb-1">{language === 'hr' ? 'Email' : 'Email'}</p>
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
                   </a>
                 </div>
               </div>
-              <div className="group flex items-center space-x-3">
+              <div className="group flex items-center space-x-3 justify-center md:justify-start">
                 <Phone className="w-4 h-4 text-green-400" />
                 <div>
                   <p className="font-medium text-white mb-1">{language === 'hr' ? 'Telefon' : 'Phone'}</p>
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
                   </a>
                 </div>
               </div>
-              <div className="group flex items-center space-x-3">
+              <div className="group flex items-center space-x-3 justify-center md:justify-start">
                 <MapPin className="w-4 h-4 text-purple-400" />
                 <div>
                   <p className="font-medium text-white mb-1">{language === 'hr' ? 'Adresa' : 'Address'}</p>
@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
                   </a>
                 </div>
               </div>
-              <div className="group flex items-center space-x-3">
+              <div className="group flex items-center space-x-3 justify-center md:justify-start">
                 <Clock className="w-4 h-4 text-orange-400" />
                 <div>
                   <p className="font-medium text-white mb-1">{t('workingHours')}</p>
