@@ -102,17 +102,6 @@ const Header: React.FC = () => {
               backgroundColor: scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.05)'
             }}>
               <button
-                onClick={() => setLanguage('en')}
-                className="px-3 py-1.5 text-xs font-bold rounded-md transition-all duration-300"
-                style={{
-                  backgroundColor: language === 'en' ? (scrollProgress > 0.3 ? 'white' : 'rgb(59, 130, 246)') : 'transparent',
-                  color: language === 'en' ? (scrollProgress > 0.3 ? 'rgb(59, 130, 246)' : 'white') : (scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.7)' : 'rgb(107, 114, 128)'),
-                  boxShadow: language === 'en' ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none'
-                }}
-              >
-                EN
-              </button>
-              <button
                 onClick={() => setLanguage('hr')}
                 className="px-3 py-1.5 text-xs font-bold rounded-md transition-all duration-300"
                 style={{
@@ -122,6 +111,17 @@ const Header: React.FC = () => {
                 }}
               >
                 HR
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className="px-3 py-1.5 text-xs font-bold rounded-md transition-all duration-300"
+                style={{
+                  backgroundColor: language === 'en' ? (scrollProgress > 0.3 ? 'white' : 'rgb(59, 130, 246)') : 'transparent',
+                  color: language === 'en' ? (scrollProgress > 0.3 ? 'rgb(59, 130, 246)' : 'white') : (scrollProgress > 0.3 ? 'rgba(255, 255, 255, 0.7)' : 'rgb(107, 114, 128)'),
+                  boxShadow: language === 'en' ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none'
+                }}
+              >
+                EN
               </button>
             </div>
 

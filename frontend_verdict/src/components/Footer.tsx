@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
               <span className="ml-4 text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Verdict</span>
             </div>
             <p className="text-gray-300 leading-relaxed text-lg mb-6 max-w-md mx-auto md:mx-0">
-              {t('aboutText')}
+              {t('footerSlogan')}
             </p>
             
             {/* Social Links */}
@@ -82,14 +82,14 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t('quickLinks')}</h3>
-            <div className="space-y-3">
+            <div className="flex flex-col items-center md:items-start space-y-3">
               {quickLinks.map((link, index) => (
                 <button
                   key={index}
                   onClick={() => smoothScrollTo(link.id)}
-                  className="block w-full text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-2 font-medium"
+                  className="text-gray-300 hover:text-white transition-all duration-200 md:hover:translate-x-2 font-medium"
                 >
                   {link.label}
                 </button>
@@ -98,49 +98,32 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-bold text-xl mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{t('contactInfo')}</h3>
             <div className="space-y-4 text-gray-300">
-              <div className="group flex items-center space-x-3 justify-center md:justify-start">
-                <Mail className="w-4 h-4 text-blue-400" />
+              <div className="flex items-start space-x-3 w-fit">
+                <Mail className="w-4 h-4 text-blue-400 mt-1 shrink-0" />
                 <div>
-                  <p className="font-medium text-white mb-1">{language === 'hr' ? 'Email' : 'Email'}</p>
-                  <a 
-                    href="mailto:verdict.amg@gmail.com" 
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
-                  >
-                    verdict.amg@gmail.com
-                  </a>
+                  <p className="font-medium text-white mb-1">Email</p>
+                  <a href="mailto:verdict.amg@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors">verdict.amg@gmail.com</a>
                 </div>
               </div>
-              <div className="group flex items-center space-x-3 justify-center md:justify-start">
-                <Phone className="w-4 h-4 text-green-400" />
+              <div className="flex items-start space-x-3 w-fit">
+                <Phone className="w-4 h-4 text-green-400 mt-1 shrink-0" />
                 <div>
                   <p className="font-medium text-white mb-1">{language === 'hr' ? 'Telefon' : 'Phone'}</p>
-                  <a 
-                    href="tel:+385915148509" 
-                    className="text-gray-300 hover:text-green-400 transition-colors"
-                  >
-                    +385 91 514 8509
-                  </a>
+                  <a href="tel:+385915148509" className="text-gray-300 hover:text-green-400 transition-colors">+385 91 514 8509</a>
                 </div>
               </div>
-              <div className="group flex items-center space-x-3 justify-center md:justify-start">
-                <MapPin className="w-4 h-4 text-purple-400" />
+              <div className="flex items-start space-x-3 w-fit">
+                <MapPin className="w-4 h-4 text-purple-400 mt-1 shrink-0" />
                 <div>
                   <p className="font-medium text-white mb-1">{language === 'hr' ? 'Adresa' : 'Address'}</p>
-                  <a 
-                    href="https://maps.google.com/?q=Gala+157,+Gala,+Croatia" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-purple-400 transition-colors"
-                  >
-                    Gala 157, Gala
-                  </a>
+                  <a href="https://maps.google.com/?q=Gala+157,+Gala,+Croatia" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-purple-400 transition-colors">Gala 157, Gala</a>
                 </div>
               </div>
-              <div className="group flex items-center space-x-3 justify-center md:justify-start">
-                <Clock className="w-4 h-4 text-orange-400" />
+              <div className="flex items-start space-x-3 w-fit">
+                <Clock className="w-4 h-4 text-orange-400 mt-1 shrink-0" />
                 <div>
                   <p className="font-medium text-white mb-1">{t('workingHours')}</p>
                   <p className="text-gray-300">{t('workingHoursTime')}</p>

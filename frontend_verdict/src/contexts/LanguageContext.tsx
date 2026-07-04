@@ -20,13 +20,13 @@ const translations = {
     
     // Hero Section
     heroTitle: 'Professional Vehicle Assessment Services',
-    heroSubtitle: 'Registered for vehicle, machinery and property valuation and damage assessment throughout Dalmatia',
+    heroSubtitle: 'Registered for vehicle, machinery and property valuation and damage assessment in Zadar, Šibenik-Knin, Split-Dalmatia and Dubrovnik-Neretva counties',
     learnMore: 'Learn More',
     modernInnovative: 'Modern & Innovative',
     
     // About Section
     aboutTitle: 'About VERDICT',
-    aboutText: 'Professional vehicle assessment services throughout Dalmatia. Expert damage evaluation and valuation.',
+    aboutText: 'Professional assessment and valuation services across Zadar, Šibenik-Knin, Split-Dalmatia and Dubrovnik-Neretva counties. Expert damage evaluation and valuation.',
     whoWeAre: 'Who We Are',
     excellence: 'Excellence',
     excellenceDesc: 'Committed to delivering exceptional quality in every project',
@@ -48,6 +48,12 @@ const translations = {
     service4Text: 'Damage assessment on industrial and self-propelled machinery - so-called "Machine Breakdown"',
     service5Title: 'Property Damage Assessment',
     service5Text: 'Professional assessment of property damage for insurance and legal purposes',
+    learnMoreBtn: 'Learn More',
+    service1Detail: 'We perform detailed photo documentation of the vehicle, archive all relevant documentation, and determine the fair market value in accordance with European standards. Our reports are accepted by all major insurance companies and courts.',
+    service2Detail: 'After an extraordinary event such as a breakdown or traffic accident, a vehicle loses part of its market value even after repairs. We prepare expert reports that quantify this loss, enabling you to claim full compensation.',
+    service3Detail: 'Our independent damage assessments are based on years of professional experience. We provide objective, court-admissible reports for insurance claims, disputes, and legal proceedings.',
+    service4Detail: 'We assess damage on industrial and self-propelled machinery — the so-called "Machine Breakdown". Our experts evaluate repair costs and residual value for insurance and leasing purposes.',
+    service5Detail: 'We provide professional assessments of property damage caused by natural disasters, accidents, or other events, for insurance claims, legal proceedings, and reconstruction planning.',
     
     // Contact Section
     contactTitle: 'Get In Touch',
@@ -59,6 +65,7 @@ const translations = {
     
     // Footer
     footerText: 'All rights reserved.',
+    footerSlogan: 'Expertise that is measured in results.',
     quickLinks: 'Quick Links',
     contactInfo: 'Contact Info',
     workingHours: 'Working Hours',
@@ -76,13 +83,13 @@ const translations = {
     
     // Hero Section
     heroTitle: 'Profesionalne Usluge Procjene Vozila',
-    heroSubtitle: 'Registrirani za procjenu vrijednosti i štete na motornim vozilima, strojevima i imovini na području cijele Dalmacije',
+    heroSubtitle: 'Registrirani za procjenu vrijednosti i štete na motornim vozilima, strojevima i imovini na području Zadarske, Šibensko-kninske, Splitsko-dalmatinske i Dubrovačko-neretvanske županije',
     learnMore: 'Saznajte Više',
     modernInnovative: 'Moderno i Inovativno',
     
     // About Section
     aboutTitle: 'O VERDICT-u',
-    aboutText: 'Profesionalne usluge procjene vozila u Dalmaciji. Stručna procjena štete i vrijednosti.',
+    aboutText: 'Profesionalne usluge procjene i vještačenja imovine na području Zadarske, Šibensko-kninske, Splitsko-dalmatinske i Dubrovačko-neretvanske županije. Stručna procjena štete i vrijednosti.',
     whoWeAre: 'Tko Smo Mi',
     excellence: 'Izvrsnost',
     excellenceDesc: 'Posvećeni pružanju iznimne kvalitete u svakom projektu',
@@ -104,6 +111,12 @@ const translations = {
     service4Text: 'Procjene štete na radnim strojevima (industrijski i samohodni) - takozvani "Lom stroja"',
     service5Title: 'Procjene štete na nekretninama',
     service5Text: 'Stručna procjena štete na nekretninama za osiguravajuće i pravne svrhe',
+    learnMoreBtn: 'Saznaj više',
+    service1Detail: 'Izrađujemo detaljan foto-elaborat vozila, arhiviramo svu relevantnu dokumentaciju te određujemo poštenu tržišnu vrijednost sukladno europskim standardima. Naši elaborati prihvaćeni su od strane svih većih osiguravajućih kuća i sudova.',
+    service2Detail: 'Nakon izvanrednog događaja poput kvara ili prometne nesreće, vozilo gubi dio tržišne vrijednosti čak i nakon popravka. Izrađujemo stručne elaborate koji kvantificiraju taj gubitak, omogućujući vam ostvarivanje pune naknade.',
+    service3Detail: 'Naše neovisne procjene štete temelje se na godinama profesionalnog iskustva. Pružamo objektivne, sudski prihvatljive elaborate za osiguravajuće zahtjeve, sporove i pravne postupke.',
+    service4Detail: 'Procjenjujemo štete na industrijskim i samohodnim strojevima — takozvani „Lom stroja". Naši stručnjaci procjenjuju troškove popravka i ostatnu vrijednost za potrebe osiguranja i leasinga.',
+    service5Detail: 'Pružamo stručne procjene štete na nekretninama nastalih uslijed prirodnih katastrofa, nezgoda ili drugih događaja, za potrebe osiguranja, pravnih postupaka i planiranja obnove.',
     
     // Contact Section
     contactTitle: 'Kontaktirajte Nas',
@@ -115,6 +128,7 @@ const translations = {
     
     // Footer
     footerText: 'Sva prava pridržana.',
+    footerSlogan: 'Stručnost koja se mjeri rezultatima.',
     quickLinks: 'Brze Poveznice',
     contactInfo: 'Kontakt Informacije',
     workingHours: 'Radno Vrijeme',

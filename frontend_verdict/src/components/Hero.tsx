@@ -9,8 +9,8 @@ const Hero: React.FC = () => {
   const [showSeoText, setShowSeoText] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSeoText(true), 4000);
-    return () => clearTimeout(timer);
+    const timer = setInterval(() => setShowSeoText(prev => !prev), 7000);
+    return () => clearInterval(timer);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
                     >
                       <h3 className="text-2xl font-bold mb-1">Andrija Mravak</h3>
                       <p className="text-sm font-medium text-blue-200">
-                        {language === 'hr' ? '"Vaš mir, moj prioritet"' : '"Your Peace of Mind, My Priority"'}
+                        {language === 'hr' ? '"Stručnost koju možete mjeriti"' : '"Expertise you can measure"'}
                       </p>
                     </motion.div>
                   ) : (
@@ -138,8 +138,8 @@ const Hero: React.FC = () => {
                       <h3 className="text-xl font-bold mb-2">Andrija Mravak - Verdict</h3>
                       <p className="text-sm font-medium text-blue-200 leading-relaxed">
                         {language === 'hr'
-                          ? 'Ovlašteni procjenitelj za procjenu vozila i procjenu štete nakon prometnih nesreća u Hrvatskoj. Stručne usluge procjene vrijednosti vozila, strojeva i nekretnina u Dalmaciji.'
-                          : 'Certified assessor for vehicle valuation and damage assessment after traffic accidents in Croatia. Expert services for vehicle, machinery, and real estate valuation in Dalmatia.'}
+                          ? 'Mag. ing. traff. — stručnjak za procjenu i vještačenje u prometu'
+                          : 'Mag. ing. traff. — Expert in Traffic Assessment & Valuation'}
                       </p>
                     </motion.div>
                   )}
