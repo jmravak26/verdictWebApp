@@ -9,6 +9,7 @@ const Partners: React.FC = () => {
     { name: 'Dekra', logo: '/imagesLogo/DekraLogo.jpg', url: 'https://www.dekra.hr/hr/damage-appraisal/' },
     { name: 'Grawe', logo: '/imagesLogo/GraweLogo.png', url: 'https://www.grawe.hr/' },
     { name: 'Uniqa', logo: '/imagesLogo/UniqaLogo.jpg', url: 'https://www.uniqa.hr/' },
+    { name: 'Wiener', logo: '/imagesLogo/WienerLogo.png', url: 'https://www.wiener.hr/' },
   ];
 
   const pastPartners = [
@@ -16,7 +17,6 @@ const Partners: React.FC = () => {
     { name: 'Generali', logo: '/imagesLogo/GeneraliLogo.png', url: 'https://generali.hr/' },
     { name: 'Sava Osiguranje', logo: '/imagesLogo/SavaLogo.png', url: 'https://www.sava-osiguranje.hr/' },
     { name: 'Triglav', logo: '/imagesLogo/TriglavLogo.png', url: 'https://www.triglav.hr/' },
-    { name: 'Wiener', logo: '/imagesLogo/WienerLogo.png', url: 'https://www.wiener.hr/' },
   ];
 
   return (
@@ -63,7 +63,7 @@ const Partners: React.FC = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">
             {language === 'hr' ? 'Trenutni Partneri' : 'Current Partners'}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {currentPartners.map((partner, index) => (
               <motion.a
                 key={index}
@@ -101,7 +101,7 @@ const Partners: React.FC = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">
             {language === 'hr' ? 'Prethodna Suradnja' : 'Previous Collaborations'}
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {pastPartners.map((partner, index) => (
               <motion.a
                 key={index}

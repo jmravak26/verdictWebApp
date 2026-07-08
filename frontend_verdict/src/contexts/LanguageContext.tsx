@@ -19,7 +19,7 @@ const translations = {
     contact: 'Contact',
     
     // Hero Section
-    heroTitle: 'Professional Vehicle Assessment Services',
+    heroTitle: 'Professional Assessment Services',
     heroSubtitle: 'Registered for vehicle, machinery and property valuation and damage assessment in Zadar, Šibenik-Knin, Split-Dalmatia and Dubrovnik-Neretva counties',
     learnMore: 'Learn More',
     modernInnovative: 'Modern & Innovative',
@@ -82,7 +82,7 @@ const translations = {
     contact: 'Kontakt',
     
     // Hero Section
-    heroTitle: 'Profesionalne Usluge Procjene Vozila',
+    heroTitle: 'Profesionalne Usluge Procjene',
     heroSubtitle: 'Registrirani za procjenu vrijednosti i štete na motornim vozilima, strojevima i imovini na području Zadarske, Šibensko-kninske, Splitsko-dalmatinske i Dubrovačko-neretvanske županije',
     learnMore: 'Saznajte Više',
     modernInnovative: 'Moderno i Inovativno',
