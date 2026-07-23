@@ -1,8 +1,8 @@
 export const smoothScrollTo = (sectionId: string) => {
   const element = document.getElementById(sectionId);
   if (element) {
-    const headerHeight = 80;
-    const elementPosition = element.offsetTop - headerHeight;
+    const offset = document.querySelector('header')?.offsetHeight ?? 80;
+    const elementPosition = element.offsetTop - offset;
     
     // Smooth scroll with custom easing
     const startPosition = window.pageYOffset;

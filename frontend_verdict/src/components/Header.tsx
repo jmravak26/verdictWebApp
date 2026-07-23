@@ -7,6 +7,7 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
@@ -22,18 +23,35 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isScrolling]);
 
+  useEffect(() => {
+    const sections = ['footer', 'partners', 'about', 'services', 'home'];
+    const handleActiveSpy = () => {
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 100) {
+          setActiveSection(id);
+          return;
+        }
+      }
+      setActiveSection('home');
+    };
+    window.addEventListener('scroll', handleActiveSpy, { passive: true });
+    return () => window.removeEventListener('scroll', handleActiveSpy);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
-    setIsScrolling(true);
-    smoothScrollTo(sectionId);
     setTimeout(() => {
-      setIsScrolling(false);
-      // Force update scroll progress after animation
-      const scrollY = window.scrollY;
-      const maxScroll = 300;
-      const progress = Math.min(scrollY / maxScroll, 1);
-      setScrollProgress(progress);
-    }, 1200);
+      setIsScrolling(true);
+      smoothScrollTo(sectionId);
+      setTimeout(() => {
+        setIsScrolling(false);
+        const scrollY = window.scrollY;
+        const maxScroll = 300;
+        const progress = Math.min(scrollY / maxScroll, 1);
+        setScrollProgress(progress);
+      }, 1200);
+    }, 50);
   };
 
   return (
@@ -87,9 +105,10 @@ const Header: React.FC = () => {
               >
                 {t(section)}
                 <span 
-                  className="absolute bottom-0 left-1/2 w-0 h-0.5 transition-all duration-300 group-hover:w-full group-hover:left-0"
+                  className="absolute bottom-0 left-0 h-0.5 transition-all duration-300"
                   style={{
-                    backgroundColor: scrollProgress > 0.3 ? 'white' : 'rgb(37, 99, 235)'
+                    backgroundColor: scrollProgress > 0.3 ? 'white' : 'rgb(37, 99, 235)',
+                    width: activeSection === (section === 'contact' ? 'footer' : section) ? '100%' : '0%',
                   }}
                 ></span>
               </button>

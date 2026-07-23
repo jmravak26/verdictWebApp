@@ -5,6 +5,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Partners from './components/Partners';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Partners />
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </LanguageProvider>
   );

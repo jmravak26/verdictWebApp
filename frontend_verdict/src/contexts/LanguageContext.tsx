@@ -45,7 +45,7 @@ const translations = {
     service3Title: 'Damage Assessment',
     service3Text: 'Independent and professional damage assessment using knowledge and experience gained through years of work in the profession',
     service4Title: 'Machinery Damage Assessment',
-    service4Text: 'Damage assessment on industrial and self-propelled machinery - so-called "Machine Breakdown"',
+    service4Text: 'Damage assessment on industrial and self-propelled machinery, so-called "Machine Breakdown"',
     service5Title: 'Property Damage Assessment',
     service5Text: 'Professional assessment of property damage for insurance and legal purposes',
     learnMoreBtn: 'Learn More',
@@ -108,7 +108,7 @@ const translations = {
     service3Title: 'Procjena Štete',
     service3Text: 'Neovisna i stručna procjena štete koristeći se znanjem i iskustvom prikupljenim godinama rada u struci',
     service4Title: 'Procjene štete na radnim strojevima',
-    service4Text: 'Procjene štete na radnim strojevima (industrijski i samohodni) - takozvani "Lom stroja"',
+    service4Text: 'Procjene štete na radnim strojevima (industrijski i samohodni), takozvani "Lom stroja"',
     service5Title: 'Procjene štete na nekretninama',
     service5Text: 'Stručna procjena štete na nekretninama za osiguravajuće i pravne svrhe',
     learnMoreBtn: 'Saznaj više',
@@ -141,14 +141,21 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('hr');
+  const [language, setLanguage] = useState<Language>(
+    () => (localStorage.getItem('lang') as Language) || 'hr'
+  );
+
+  const handleSetLanguage = (lang: Language) => {
+    localStorage.setItem('lang', lang);
+    setLanguage(lang);
+  };
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['en']] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
