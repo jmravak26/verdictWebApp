@@ -129,6 +129,13 @@ const Footer: React.FC = () => {
                   <p className="text-gray-300">{t('workingHoursTime')}</p>
                 </div>
               </div>
+              <div className="flex items-start space-x-3 w-fit">
+                <Building2 className="w-4 h-4 text-blue-400 mt-1 shrink-0" />
+                <div>
+                  <p className="font-medium text-white mb-1">OIB</p>
+                  <p className="text-gray-300">79334220142</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
