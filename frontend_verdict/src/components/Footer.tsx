@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 const Footer: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
 
   const createHearts = () => {
@@ -111,14 +111,14 @@ const Footer: React.FC = () => {
               <div className="flex items-start space-x-3 w-fit">
                 <Phone className="w-4 h-4 text-green-400 mt-1 shrink-0" />
                 <div>
-                  <p className="font-medium text-white mb-1">{language === 'hr' ? 'Telefon' : 'Phone'}</p>
+                  <p className="font-medium text-white mb-1">{t('phone')}</p>
                   <a href="tel:+385915148509" className="text-gray-300 hover:text-green-400 transition-colors">+385 91 514 8509</a>
                 </div>
               </div>
               <div className="flex items-start space-x-3 w-fit">
                 <MapPin className="w-4 h-4 text-purple-400 mt-1 shrink-0" />
                 <div>
-                  <p className="font-medium text-white mb-1">{language === 'hr' ? 'Adresa' : 'Address'}</p>
+                  <p className="font-medium text-white mb-1">{t('address')}</p>
                   <a href="https://maps.google.com/?q=Gala+157,+Gala,+Croatia" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-purple-400 transition-colors">Gala 157, Gala</a>
                 </div>
               </div>

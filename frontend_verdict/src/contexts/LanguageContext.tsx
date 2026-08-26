@@ -72,6 +72,8 @@ const translations = {
     workingHoursTime: 'Mon - Fri: 8:00 AM - 4:00 PM',
     madeWith: 'Made with',
     inCroatia: 'in Croatia',
+    phone: 'Phone',
+    address: 'Address',
   },
   hr: {
     // Navigation
@@ -135,6 +137,8 @@ const translations = {
     workingHoursTime: 'Pon - Pet: 08:00 - 16:00',
     madeWith: 'Napravljeno s',
     inCroatia: 'u Hrvatskoj',
+    phone: 'Telefon',
+    address: 'Adresa',
   },
 };
 
@@ -146,7 +150,9 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   );
 
   const handleSetLanguage = (lang: Language) => {
-    localStorage.setItem('lang', lang);
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      localStorage.setItem('lang', lang);
+    }
     setLanguage(lang);
   };
 
